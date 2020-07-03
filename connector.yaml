@@ -1,0 +1,22 @@
+apiVersion: enmasse.io/v1beta1
+kind: AddressSpace
+metadata:
+  name: myconnector
+spec:
+  type: standard
+  plan: standard-unlimited
+  authenticationService:
+    name: none-authservice
+  connectors:
+  - name: addressspaceconnector
+    credentials:
+      username:
+        value: developer
+      password:
+        value: pwd
+    endpointHosts:
+    - host: <service>.<namespace>.svc.cluster.local
+      port: 5672
+    addresses:
+    - name: q1
+      pattern: "queues/*"

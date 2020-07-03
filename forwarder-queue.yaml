@@ -1,0 +1,12 @@
+apiVersion: enmasse.io/v1beta1
+kind: Address
+metadata:
+  name: myconnector.forwarderqueue
+spec:
+  address: forwarderqueue
+  type: queue
+  plan: standard-small-queue
+  forwarders:
+  - name: forwarder
+    remoteAddress: addressspaceconnector/queues/q1
+    direction: out
